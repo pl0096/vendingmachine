@@ -47,6 +47,7 @@ package vendingMachine;
 
 
 import java.lang.Math;
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 
@@ -63,7 +64,9 @@ public class Model {
 	private int quartersDeposited, dimesDeposited, nickelsDeposited;
 	private int centsDeposited;
 	private String message;
-	
+	private static final DecimalFormat decfor = new DecimalFormat("0.00");
+
+
 	//I defined about 10 more fields
 	
 	//Define constructor
@@ -180,7 +183,7 @@ public class Model {
 		}
 		message = message + " Quarters: " + quartersDeposited + " Dimes: " + dimesDeposited + " Nickels: " + nickelsDeposited;
 		double d = (double )centsDeposited / 100.0;
-		message = message + " Amount Deposited $" + d;
+		//message = message + " Amount Deposited $" + d;
 		view.update();
 
 	}
@@ -250,7 +253,7 @@ public class Model {
 
 	}
 	public String getDeposited(){
-		return quartersLeft + ", " + dimesLeft + ", " + nickelsLeft;
+		return "$" + decfor.format(centsDeposited / 100.00);
 	}
 	public String getMessage(){
 		return message;
@@ -263,11 +266,11 @@ public class Model {
 	}
 	public String getPepsiPrice(){
 		double d = (double) pepsiPrice / 100;
-		return "$" + d;
+		return "$" + decfor.format(d);
 	}
 	public String getCokePrice(){
 		double d = (double) cokePrice / 100;
-		return "$" + d;
+		return "$" + decfor.format(d);
 	}
 
 
